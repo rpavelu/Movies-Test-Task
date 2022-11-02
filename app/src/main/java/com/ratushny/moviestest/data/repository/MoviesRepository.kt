@@ -13,11 +13,20 @@ class MoviesRepository(
     private val service: MoviesServiceV3,
 ) : MoviesRepositoryApi {
 
-    override suspend fun loadMoviesList(): List<Movie> = withContext(Dispatchers.IO) {
-        service.loadMoviesList(BuildConfig.API_KEY).results.map { it.convertToAppEntity() }
-    }
+    override suspend fun loadMoviesList(): Result<List<Movie>> =
+        withContext(Dispatchers.IO) {
+            runCatching {
+                service.loadMoviesList(BuildConfig.API_KEY)
+                    .results
+                    .map { it.convertToAppEntity() }
+            }
+        }
 
-    override suspend fun loadMovieDetails(id: Long): MovieDetails = withContext(Dispatchers.IO) {
-        service.loadMovieDetails(id.toString(), BuildConfig.API_KEY).convertToAppEntity()
-    }
+    override suspend fun loadMovieDetails(id: Long): Result<MovieDetails> =
+        withContext(Dispatchers.IO) {
+            runCatching {
+                service.loadMovieDetails(id.toString(), BuildConfig.API_KEY)
+                    .convertToAppEntity()
+            }
+        }
 }

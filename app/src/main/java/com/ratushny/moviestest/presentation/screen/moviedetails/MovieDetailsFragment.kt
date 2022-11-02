@@ -38,17 +38,21 @@ class MovieDetailsFragment :
 
     override fun screenStateObserver(): Observer<MovieDetailsScreenState> = Observer { state ->
         with(binding) {
-            progressLoading.isVisible = state.state == MovieDetailsScreenState.State.LOADING
-            textError.isVisible = state.state == MovieDetailsScreenState.State.ERROR
+            progressLoading.isVisible = state.isLoading
 
-            textTitle.text = state.movie.title
-            textTitleOriginal.text = state.movie.originalTitle
-            textTagline.text = state.movie.tagline
-            textDescription.text = state.movie.overview
+            val isFailure = state.movie.isFailure
+            textError.isVisible = isFailure
 
-            if (state.state == MovieDetailsScreenState.State.SUCCESS) {
+            val movie = state.movie.getOrNull()
+
+            textTitle.text = movie?.title
+            textTitleOriginal.text = movie?.originalTitle
+            textTagline.text = movie?.tagline
+            textDescription.text = movie?.overview
+
+            if (state.movie.isSuccess && movie?.posterPath?.isNotEmpty() == true) {
                 Glide.with(requireContext())
-                    .load(state.movie.posterPath)
+                    .load(movie.posterPath)
                     .fitCenter()
                     .listener(object : RequestListener<Drawable> {
                         override fun onLoadFailed(

@@ -8,7 +8,7 @@ class MoviesInteractor(
     private val repository: MoviesRepositoryApi,
 ) {
 
-    suspend fun loadMoviesList(): List<Movie> = repository.loadMoviesList()
+    suspend fun loadMoviesList(): Result<List<Movie>> = repository.loadMoviesList()
 
-    suspend fun loadMovieDetails(id: Long): MovieDetails = repository.loadMovieDetails(id)
+    suspend fun loadMovieDetails(id: Long): Result<MovieDetails> = repository.loadMovieDetails(id)
 }

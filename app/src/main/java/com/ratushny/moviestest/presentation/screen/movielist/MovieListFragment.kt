@@ -59,14 +59,15 @@ class MovieListFragment :
 
     override fun screenStateObserver(): Observer<MovieListScreenState> = Observer { state ->
         with(binding) {
-            progressLoading.isVisible = state.state == MovieListScreenState.State.LOADING
-            textError.isVisible = state.state == MovieListScreenState.State.ERROR
-            textEmpty.isVisible = state.state == MovieListScreenState.State.SUCCESS
-                    && state.movies.isEmpty()
-            recyclerviewMovies.isVisible = state.state == MovieListScreenState.State.SUCCESS
-                    && state.movies.isNotEmpty()
+            progressLoading.isVisible = state.isLoading
 
-            moviesAdapter.submitList(state.movies)
+            val isFailure = state.moviesResult.isFailure
+            val movies = state.moviesResult.getOrNull()
+
+            textError.isVisible = isFailure
+            textEmpty.isVisible = !state.isLoading && movies?.isEmpty() == true
+            recyclerviewMovies.isVisible = !isFailure
+            moviesAdapter.submitList(movies)
         }
     }
 }

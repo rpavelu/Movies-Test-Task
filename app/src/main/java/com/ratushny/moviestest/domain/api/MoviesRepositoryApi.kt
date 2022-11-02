@@ -5,7 +5,7 @@ import com.ratushny.moviestest.domain.model.MovieDetails
 
 interface MoviesRepositoryApi {
 
-    suspend fun loadMoviesList(): List<Movie>
+    suspend fun loadMoviesList(): Result<List<Movie>>
 
-    suspend fun loadMovieDetails(id: Long): MovieDetails
+    suspend fun loadMovieDetails(id: Long): Result<MovieDetails>
 }

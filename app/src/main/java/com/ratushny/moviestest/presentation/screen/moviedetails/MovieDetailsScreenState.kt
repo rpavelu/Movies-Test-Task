@@ -3,14 +3,22 @@ package com.ratushny.moviestest.presentation.screen.moviedetails
 import com.ratushny.moviestest.domain.model.MovieDetails
 
 data class MovieDetailsScreenState(
-    val movie: MovieDetails,
-    val state: State,
+    val movie: Result<MovieDetails>,
+    val isLoading: Boolean,
 ) {
-
-    enum class State {
-        LOADING,
-        SUCCESS,
-        ERROR,
-        ;
+    companion object {
+        val default
+            get() = MovieDetailsScreenState(
+                movie = Result.success(
+                    MovieDetails(
+                        title = "",
+                        originalTitle = "",
+                        tagline = "",
+                        posterPath = "",
+                        overview = "",
+                    )
+                ),
+                isLoading = true,
+            )
     }
 }
