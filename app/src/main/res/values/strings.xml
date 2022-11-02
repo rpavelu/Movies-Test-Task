@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Movies Test Task</string>
+
+    <string name="movie_list_fragment_label">Top 20 Movies</string>
+    <string name="movie_fragment_label">Movie</string>
+    <string name="refresh">Refresh</string>
+
+    <string name="text_error">Error! Try to refresh!</string>
+    <string name="movies_list_empty">Movies list is empty</string>
+</resources>

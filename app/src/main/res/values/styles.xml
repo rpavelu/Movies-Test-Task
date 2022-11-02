@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text.Basic" parent="Theme.MoviesTest">
+        <item name="android:textSize">@dimen/basic_text_size</item>
+    </style>
+
+    <style name="Text.MovieItem.Title" parent="Theme.MoviesTest">
+        <item name="android:textSize">@dimen/movie_item_title_text_size</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">3</item>
+    </style>
+
+    <style name="Text.MovieItem.Year" parent="Text.Basic">
+        <item name="android:maxLength">4</item>
+    </style>
+
+    <style name="Text.MovieItem.Rating" parent="Text.Basic">
+        <item name="android:maxLength">3</item>
+    </style>
+
+    <style name="Text.MovieDetails.Title" parent="Theme.MoviesTest">
+        <item name="android:textSize">@dimen/movie_details_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">3</item>
+    </style>
+
+    <style name="Text.MovieDetails.TitleOriginal" parent="Text.Basic">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">3</item>
+    </style>
+
+    <style name="Text.MovieDetails.Tagline" parent="Text.Basic">
+        <item name="android:textStyle">italic</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">3</item>
+    </style>
+
+    <style name="Text.MovieDetails.Description" parent="Text.Basic" />
+</resources>

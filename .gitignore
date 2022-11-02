@@ -1,0 +1,16 @@
+#Android
+local.properties
+
+#Gradle
+.gradle
+/build
+
+#IntelliJ Idea
+*.iml
+.idea/*
+
+#Mac
+.DS_Store
+
+#API KEY
+apikey.properties

@@ -1,0 +1,6 @@
+<resources>
+
+    <style name="Base.Theme.MoviesTest" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="Theme.MoviesTest" parent="Base.Theme.MoviesTest" />
+</resources>
